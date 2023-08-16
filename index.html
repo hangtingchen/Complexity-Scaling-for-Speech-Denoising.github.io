@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Ultra Dual-Path Compression For Joint Echo Cancellation and Noise Suppression</title>
+		<title>Scaling Denoising Models from Low to High Computational Complexity</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -23,19 +23,13 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h2>Ultra Dual-Path Compression For Joint Echo Cancellation and Noise Suppression</h2>
-											<p>Accepted by Interspeech 2023</p>
-											<p>Authors: Hangting Chen, Jianwei Yu, Yi Luo, Rongzhi Gu, Weihua Li, Zhuocheng Lu, Chao Weng</p>
-											<p>Tencent AI Lab, Audio and Speech Signal Processing Oteam</p>
-											<p>Email: chenhangting17@mails.ucas.ac.cn</p>
+											<h2>Scaling Denoising Models from Low to High Computational Complexity</h2>
+											<p>Submitted to ICASSP 2024</p>
+											<p>Authors: Anonymous</p>
+											<!-- <p>Tencent AI Lab, Audio and Speech Signal Processing Oteam</p>
+											<p>Email: chenhangting17@mails.ucas.ac.cn</p> -->
 										</header>
-										<p>Abstract:
-										 Echo cancellation and noise reduction are essential for full-duplex communication, yet most existing neural networks have high computational costs and are inflexible in tuning model complexity. 
-										 In this paper, we introduce time-frequency dual-path compression to achieve a wide range of compression ratios on computational cost. 
-										 Specifically, for frequency compression, trainable filters are used to replace manually designed filters for dimension reduction. 
-										 For time compression, only using frame skipped prediction causes large performance degradation, which can be alleviated by a post-processing network with full sequence modeling. 
-										 We have found that under fixed compression ratios, dual-path compression combining both the time and frequency methods will give further performance improvement, covering compression ratios from 4x to 32x with little model size change. 
-										 Moreover, the proposed models show competitive performance compared with fast FullSubNet and DeepFilterNet.
+										<p>Abstract: TBP
 										</p>
 										<!--
 										<ul class="actions">
@@ -44,12 +38,12 @@
 									</div>
 								</section>
 								
-								<section id="poster">
+								<!-- <section id="poster">
 									<h2>Poster</h2>
 									<tr style="border-top:1px solid black">
 										<td><img id="poster_fig" alt="" width="100%" src="images/poster.png"></td>
 									</tr>
-								</section>
+								</section> -->
 
 							<!-- Section -->
 								<section id="details">
@@ -60,37 +54,26 @@
 										<article>
 											<div class="content">
 												<h3>Background</h3>
-												<p>Model performance relates to (1) architecture and (2) # params. & computational cost. 
-												When the architecture is determined, the # params as well as the computational cost can be tuned by hyperparameters. </p>
-												<p>AEC&ANS for full-duplex communication needs low computational cost when deployed on PC/Phones.
-												Thus, an important research topic is to lower computational cost while lowering performance degradation.</p>
+												<p>TBP </p>
 											</div>
 										</article>
 										<article>
 											<div class="content">
 												<h3>Experimental setup</h3>
-												<p>Models are trained on a simulated dataset with 100K iterations. Though the model performance can be further improved with a larger iteration number, we adopt such an iteration number for fast comparison.  </p>
-												<p>Models are tested on a semi-simulated dataset, where the echos are real-recorded ones from the AEC challenge.</p>
-												<p>Models have a window size and a hop size of 20ms and 10ms, respectively. Additional look ahead is not allowed due to causal processing.</p>
+												<p>TBP  </p>
 											</div>
 										</article>
 										<article>
 											<div class="content">
 												<h3>Framework & Method</h3>
-												<p>The whole framework consists of a linear AEC (Kalman-filter based), an online DPT-FSNet, compression and decompression modules and a post network.</p>
-												<p>Compression and Decompression are operated on the input spectra and the output features, respectively. 
-													In detail, the compression module compresses the input spectra first along the time axis and then the frequency using linear transform. The time compression uses the past and the current frames while the frequency compression is conducted with the Mel scale.
-													The decompression module decompresses the output feature first along frequency and then the time axis using linear transform. The time decompression predicts the current feature and copies it for future frames.
-													A post network (1-layer GRU) is needed to eliminate the degradation caused by the time compression.
+												<p>TBP</p>
 												</p>
 											</div>
 										</article>
 										<article>
 											<div class="content">
 												<h3>Results</h3>
-												<p>1. Time compression needs an ultra-light post-net.</p>
-												<p>2. Dual-path compression performs better than single-path compression.
-												For example, from 1.8G MACs/s to 140M MACs/s, the model achieves a 13x compression ratio but only has 0.22 PESQ drop, 0.16 and 0.14 PESQ higher than single-path compression.</p>
+												<p>TBP</p>
 											</div>
 										</article>
 									</div>
@@ -99,43 +82,36 @@
 								<section id="results_table">
 									<h2>Detailed results</h2>
 									<tr style="border-top:1px solid black">
-										<td><img id="results_fig" alt="" width="75%" src="images/results.png"></td>
+										<td><img id="results_fig1" alt="" width="75%" src="images/results1.png"></td>
+									</tr>
+									<tr style="border-top:1px solid black">
+										<td><img id="results_fig2" alt="" width="75%" src="images/results2.png"></td>
 									</tr>
 								</section>
 
-							<!-- Section -->
-								<section id="dt">
+								<section id="denoising_wo_reverb">
 									<header class="major">
-										<h2>Double talk</h2>
+										<h2>Denoising (w/o reverb)</h2>
 									</header>
 									<div class="posts">
 										<article>
 											<table cellspacing="50" style="width: 50%">
 												<thead>
 													<tr>
-														<th><center>MIC</center> </th>
-														<th><center>LPB(REF)</center> </th>
-														<th><center>Uncompressed model</center> </th>
-														<th><center>Dual-path</center> </th>
-														<th><center>Dual-path</center> </th>
-													</tr>
-													<tr style="font-size: small">
-														<th>&nbsp;</th>
-														<th>&nbsp; </th>
-														<th>&nbsp;</center></th>
-														<th><center>T2 x F2</center></th>
-														<th><center>T4 x F4</center></th>
-													</tr>
-													<tr style="font-size: small">
-														<th>&nbsp;</th>
-														<th>&nbsp; </th>
-														<th><center>MACs: 1.8G/s</center></th>
-														<th><center>MACs: 486M/s</center></th>
-														<th><center>MACs: 140M/s</center></th>
+														<th><center>MACs/s</center> </th>
+														<th><center>Causal</center> </th>
+														<th><center>1</center> </th>
+														<th><center>2</center> </th>
+														<th><center>3</center> </th>
+														<th><center>4</center> </th>
+														<th><center>5</center> </th>
+														<th><center>6</center> </th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr style="border-top:1px solid black">
+														<td><center>Mixture</center></td>
+														<td><center>N/A</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
 														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
@@ -143,227 +119,241 @@
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
 														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.4.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.16.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 													</tr>
 													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.lpb.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.est.16.wav" ></audio></td>
-													</tr>
-													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.est.16.wav" ></audio></td>
-													</tr>
-													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.lpb.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.est.16.wav" ></audio></td>
-													</tr>
-													<tr style="border-top:1px solid black">
+														<td><center>48M/s</center></td>
+														<td><center>&#x2713;</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
 														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
 														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
 														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>102M/s</center></td>
+														<td><center>&#x2713;</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.4.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.16.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>195M/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>301M/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>502M/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>1G/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>14G/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>23G/s</center></td>
+														<td><center>&#x2717;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>Clean</center></td>
+														<td><center>N/A</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 													</tr>
 												</tbody>
 											</table>
-
-											<!--<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>-->
-										</article>
-									</div>
-								</section>
-								
-							<!-- Section -->
-								<section id="nest">
-									<header class="major">
-										<h2>Near-end single talk</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<!--a href="#" class="image"><img src="images/pic02.jpg" alt="" /></--a>-->
-											<table cellspacing="50" style="width: 50%">
-												<thead>
-													<tr>
-														<th><center>MIC</center> </th>
-														<th><center>Uncompressed model</center> </th>
-														<th><center>Dual-path</center> </th>
-														<th><center>Dual-path</center> </th>
-													</tr>
-													<tr style="font-size: small">
-														<th>&nbsp; </th>
-														<th>&nbsp;</center></th>
-														<th><center>T2 x F2</center></th>
-														<th><center>T4 x F4</center></th>
-													</tr>
-													<tr style="font-size: small">
-														<th>&nbsp; </th>
-														<th><center>MACs: 1.8G/s</center></th>
-														<th><center>MACs: 486M/s</center></th>
-														<th><center>MACs: 140M/s</center></th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000000.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000000.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000000.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000000.wav.est.16.wav" ></audio></td>
-													</tr>
-													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000001.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000001.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000001.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP05_0000001.wav.est.16.wav" ></audio></td>
-													</tr>
-													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000000.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000000.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000000.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000000.wav.est.16.wav" ></audio></td>
-													</tr>
-													<tr style="border-top:1px solid black">
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000001.wav.mix.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000001.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000001.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRP99_SNRP15_0000001.wav.est.16.wav" ></audio></td>
-													</tr>
-												</tbody>
-											</table>
-
-											<!--<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>-->
 										</article>
 									</div>
 								</section>
 
-							<!-- Section -->
-								<section id="fest">
+								<section id="denoising_wi_reverb">
 									<header class="major">
-										<h2>Far-end single talk</h2>
+										<h2>Denoising (w/  reverb)</h2>
 									</header>
 									<div class="posts">
 										<article>
 											<table cellspacing="50" style="width: 50%">
 												<thead>
 													<tr>
-														<th><center>MIC</center> </th>
-														<th><center>LPB(REF)</center> </th>
-														<th><center>Uncompressed model</center> </th>
-														<th><center>Dual-path</center> </th>
-														<th><center>Dual-path</center> </th>
-													</tr>
-													<tr style="font-size: small">
-														<th>&nbsp;</th>
-														<th>&nbsp; </th>
-														<th>&nbsp;</center></th>
-														<th><center>T2 x F2</center></th>
-														<th><center>T4 x F4</center></th>
-													</tr>
-													<tr style="font-size: small">
-														<th>&nbsp;</th>
-														<th>&nbsp; </th>
-														<th><center>MACs: 1.8G/s</center></th>
-														<th><center>MACs: 486M/s</center></th>
-														<th><center>MACs: 140M/s</center></th>
+														<th><center>MACs/s</center> </th>
+														<th><center>Causal</center> </th>
+														<th><center>1</center> </th>
+														<th><center>2</center> </th>
+														<th><center>3</center> </th>
+														<th><center>4</center> </th>
+														<th><center>5</center> </th>
+														<th><center>6</center> </th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr style="border-top:1px solid black">
+														<td><center>Mixture</center></td>
+														<td><center>N/A</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000000.wav.mix.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000000.wav.lpb.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000000.wav.est.1.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000000.wav.est.4.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000000.wav.est.16.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 													</tr>
 													<tr style="border-top:1px solid black">
+														<td><center>48M/s</center></td>
+														<td><center>&#x2713;</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000001.wav.est.1.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000001.wav.est.4.wav" ></audio></td>
-														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000001.wav.est.16.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 													</tr>
 													<tr style="border-top:1px solid black">
+														<td><center>102M/s</center></td>
+														<td><center>&#x2713;</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000002.wav.mix.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000002.wav.lpb.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000002.wav.est.1.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>195M/s</center></td>
+														<td><center>&#x2713;</center></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000002.wav.est.4.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
 														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
-														  <source src="demos_audios/test_SIRN99_SNRP99_0000002.wav.est.16.wav" ></audio></td>
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>301M/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>502M/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRN05_SNRP15_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>1G/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>14G/s</center></td>
+														<td><center>&#x2713;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP05_SNRP15_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>23G/s</center></td>
+														<td><center>&#x2717;</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
+													</tr>
+													<tr style="border-top:1px solid black">
+														<td><center>Clean</center></td>
+														<td><center>N/A</center></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.mix.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.lpb.wav" ></audio></td>
+														<td><audio controls class="audio-player" preload="metadata" style="width:180px;">
+														  <source src="demos_audios/test_SIRP15_SNRP99_0000001.wav.est.1.wav" ></audio></td>
 													</tr>
 												</tbody>
 											</table>
-											<!--<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>-->
 										</article>
 									</div>
 								</section>
 
-							<!-- Section -->
-								<section id="rtf_test">
+								<!-- <section id="rtf_test">
 									<header class="major">
 										<h2>Real-time factor (RTF) test</h2>
 									</header>
@@ -386,15 +376,11 @@
 													
 												</tbody>
 											</table>
-											<!--<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>-->
 										</article>
 									</div>
-								</section>
+								</section> -->
 
-							<!-- Section -->
-							<section>
+							<!-- <section>
 								<header class="major">
 									<h2>Related works</h2>
 								</header>
@@ -408,7 +394,7 @@
 								<p>[3] X. Hao and X. Li, 
 									“Fast fullsubnet: Accelerate full-band and subband fusion model for single-channel speech enhancement,” arXiv preprint arXiv:2212.09019, 2022
 								</p>
-							</section>
+							</section> -->
 						</div>
 					</div>
 
@@ -416,14 +402,6 @@
 				<!-- Sidebar -->
 					<div id="sidebar">
 						<div class="inner">
-							<!-- Search
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-							-->
-							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
@@ -436,22 +414,20 @@
 										<li>
 											<span class="opener">Audio samples</span>
 											<ul>
-												<li><a href="#dt">Double talk</a></li>
-												<li><a href="#nest">Near-end single talk</a></li>
-												<li><a href="#fest">Far-end single talk</a></li>
+												<li><a href="#denoising_wo_reverb">Denoising (w/o reverb)</a></li>
+												<li><a href="#denoising_wi_reverb">Denoising (w/  reverb)</a></li>
 											</ul>
 										</li>
-										<li><a href="#rtf_test">Real-time factor (RTF) test</a></li>
 									</ul>
 								</nav>
 
 
 								<footer id="footer">
 									<p>
-										<center>Created by Hangting Chen </center>
+										<center>Created by </center>
 									</p>
 									<p>
-										<center>Augest 13th, 2023</center>
+										<center>Augest 16th, 2023</center>
 									</p>
 									<p class="copyright" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
 										<img src="images/tencent_icon.png" width="50%" alt="">
