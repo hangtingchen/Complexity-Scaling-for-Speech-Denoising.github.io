@@ -1,2 +1,4 @@
-# Scaling Denoising Models from Low to High Computational Complexity
-Introduction and demos of "Scaling Denoising Models from Low to High Computational Complexity" (Submiited to ICASSP 2024)
+# Complexity Scaling for Speech Denoising
+Introduction and demos of "Complexity Scaling for Speech Denoising" (Submiited to ICASSP 2024)
+
+Please visit https://hangtingchen.github.io/Complexity-Scaling-for-Speech-Denoising.github.io/
