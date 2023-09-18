@@ -23,13 +23,21 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h2>Complexity Scaling for Speech Denoisingy</h2>
+											<h2>Complexity Scaling for Speech Denoising</h2>
 										</header>
 										<p>Submitted to ICASSP 2024</p>
 										<p>Authors: Hangting Chen & Jianwei Yu & Chao Weng</p>
 										<p>Tencent AI Lab, Audio and Speech Signal Processing Oteam
 										<p>Email: chenhangting17@mails.ucas.ac.cn</p>
-										<p>Abstract: TBP
+										<p>Abstract: Computational complexity is critical when deploying deep learning-based speech denoising models for on-device applications. 
+											Most prior research focused on optimizing model architectures to meet specific computational cost constraints, often creating distinct neural network architectures for different complexity limitations. 
+											This study conducts complexity scaling for speech denoising tasks, aiming to consolidate models with various complexities into a unified architecture. 
+											We present a Multi-Path Transform-based (MPT) architecture to handle both low- and high-complexity scenarios. A series of MPT networks present high performance covering a wide range of computational complexities on the DNS challenge dataset. 
+											Moreover, inspired by the scaling experiments in natural language processing, we explore the empirical relationship between model performance and computational cost on the denoising task. 
+											As the complexity number of multiply-accumulate operations (MACs) is scaled from 50M/s to 15G/s on MPT networks, we observe a linear increase in the values of PESQ-WB and SI-SNR, proportional to the logarithm of MACs, which might contribute to the understanding and application of complexity scaling in speech denoising tasks.
+										</p>
+										<p>
+											Paper link: https://arxiv.org/pdf/2309.07757v1.pdf
 										</p>
 										<!--
 										<ul class="actions">
@@ -53,27 +61,43 @@
 									<div class="features">
 										<article>
 											<div class="content">
-												<h3>Background</h3>
-												<p>TBP </p>
+												<h3>Motivation</h3>
+												<p> 
+													(1) Most previous works cover a narrow range of computational costs. Researchers must design models with different target computational costs to satisfy various resource requirements for real-world applications, which might lead to distinct neural network architectures. 
+												</p>
+												<p>
+													(2) Neural scaling law indicates empirical relationships between parameters, facilitating designing and understanding neural network models. However, studies have yet to be conducted to present scaling laws in speech signal processing.
+												</p>
 											</div>
 										</article>
 										<article>
 											<div class="content">
 												<h3>Experimental setup</h3>
-												<p>TBP  </p>
+												<p> 
+													The experiments were conducted on (1) a simulated dataset using Librispeech for ablation and (2) DNS challenge dataset to cover the complete scaling. 
+												</p>
 											</div>
 										</article>
 										<article>
 											<div class="content">
 												<h3>Framework & Method</h3>
-												<p>TBP</p>
+												<p>
+													(1) Multi-Path Transformer (MPT) network is proposed to satisfy different computational complexities towards the denoising tasks. 
+												</p>
+												<p>
+													(2) Practical network scaling techniques are uncovered for better performance.
 												</p>
 											</div>
 										</article>
 										<article>
 											<div class="content">
 												<h3>Results</h3>
-												<p>TBP</p>
+												<p>
+													(1) MPT network is the first to cover multiply-accumulate operations (MACs) from 50M/s to 25G/s and to show competitive performance on all computational complexity when tested on the DNS challenge data. 
+												</p>
+												<p>
+													(2) Scaling law illustrates that wideband perceptual evaluation of speech quality (PESQ-WB) and scale-invariant signal-to-noise ratio (SI-SNR) will have around 0.09 and 0.36 dB improvement as the computation cost is doubled when the multiply-accumulate operations per second (MACs/s) are below 15G.
+												</p>
 											</div>
 										</article>
 									</div>
@@ -84,7 +108,7 @@
 										<h2>Detailed results</h2>
 									</header>
 									<tr style="border-top:1px solid black">
-										<td><img id="results_fig1" alt="" width="75%" src="images/resutls1.jpg"></td>
+										<td><img id="results_fig1" alt="" width="75%" src="images/resutls1.png"></td>
 									</tr>
 								</section>
 
